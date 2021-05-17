@@ -1,17 +1,67 @@
 .recipe-form {
   display: flex;
   flex-direction: column;
+  padding-bottom: var(--space-l);
 
   &__form {
     display: flex;
     flex-direction: column;
 
+    label {
+      font-weight: bold;
+    }
+
     &-input {
-      border: 1px solid var(--color-primary);
+      border: 1px solid var(--color-gray);
       box-shadow: none;
       text-shadow: none;
+      min-height: 32px;
+      border-radius: 8px;
+      padding: var(--space-xxs) var(--space-xs);
       margin: 0 0 var(--space-m) 0;
       appearance: none;
+      font-size: 1rem;
+      line-height: 1rem;
+      color: var(--color-primary);
+
+      &:focus {
+        color: var(--color-peter-river);
+        border: solid 1px var(--color-peter-river);
+        outline: none;
+      }
+    }
+  }
+
+  &__total-meals {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 200px) {
+    max-width: 400px;
+
+    &__form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-m);
+
+      &-input {
+        margin-bottom: 0;
+      }
+
+      &-btn {
+        border-radius: 8px;
+        min-height: 32px;
+        font-size: 1.2em;
+        grid-column: span 2;
+        color: var(--color-white);
+        border: none;
+        box-shadow: 0 3px 3px rgba(0,0,0,.16);
+        background-color: var(--color-peter-river);
+        padding: var(--space-xs) var(--space-xs);
+      }
     }
   }
 }
