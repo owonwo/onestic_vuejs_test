@@ -105,4 +105,8 @@
       align-items: flex-end;
     }
   }
+
+  #app.theme-dark &__text {
+    color: var(--color-white);
+  }
 }

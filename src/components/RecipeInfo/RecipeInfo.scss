@@ -38,4 +38,23 @@
       }
     }
   }
+
+  #app.theme-dark & {
+    color: var(--color-white);
+
+    &__secret {
+      &-heading {
+        color: var(--color-white);
+      }
+
+      &-list {
+        color: var(--color-white);
+
+        &--heading {
+          opacity: 0.75;
+          color: var(--color-white);
+        }
+      }
+    }
+  }
 }

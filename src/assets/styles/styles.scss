@@ -15,7 +15,12 @@ html, body {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  height: 100vh;
+  min-height: 100vh;
+
+  &.theme-dark {
+    color: var(--color-white);
+    background-color: var(--color-gray-800);
+  }
 }
 
 .container {

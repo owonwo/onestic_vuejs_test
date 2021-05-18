@@ -38,6 +38,13 @@
     margin: 0;
   }
 
+  #app.theme-dark & {
+    &__form-input {
+      color: var(--color-white);
+      background-color: transparent;
+    }
+  }
+
   @media screen and (min-width: 200px) {
     max-width: 400px;
 

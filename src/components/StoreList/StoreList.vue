@@ -1,18 +1,21 @@
 <template>
   <div class="store-list">
     <h1>Our Restaurants</h1>
-    <input
-      type="text"
-      class="store-list__search-input"
-      :value="searchStr"
-      @keyup.prevent="filterBySearch"
-      placeholder="Search for a Store"
-    />
-    <br/>
-    <br/>
+    <div class="search">
+      <SearchIcon />
+      <input
+        type="text"
+        class="search__input"
+        :value="searchStr"
+        @keyup.prevent="filterBySearch"
+        placeholder="Search for a Store"
+      />
+    </div>
+    <br />
+    <br />
     <p>
-      Here you can find all of our restaurants. We have a total of <b>{{ storesCount }}</b> stores
-      right now!
+      Here you can find all of our restaurants. We have a total of
+      <b>{{ storesCount }}</b> stores right now!
     </p>
     <div class="store-list__grid">
       <template v-if="!isSearch">
@@ -52,11 +55,13 @@
 import Store from "@/components/Store/Store";
 import Pagination from "@/components/Pagination/Pagination";
 import _ from "lodash";
+import { SearchIcon } from "vue-feather-icons";
 
 export default {
   name: "StoreList",
   components: {
     Store,
+    SearchIcon,
     Pagination,
   },
   props: {
@@ -74,7 +79,7 @@ export default {
     };
   },
   computed: {
-    isSearch: vm => vm.searchStr.trim().length > 0,
+    isSearch: (vm) => vm.searchStr.trim().length > 0,
     storesWithImages() {
       return _.map(this.stores, function(store) {
         store["image"] = "https://via.placeholder.com/300?text=" + store.name;
