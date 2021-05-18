@@ -1,0 +1,42 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-l) 0;
+
+  &__wrapper {
+    display: flex;
+    overflow: hidden;
+    padding: var(--space-m);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--space-xs);
+  }
+
+  &__list {
+    width: 2.5rem;
+    display: flex;
+    flex: 0 0 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    appearance: none;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+
+    &--active {
+      color: white;
+      border-radius: 50%;
+      background-color: var(--color-peter-river);
+      border-color: var(--color-peter-river);
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+      &__list {
+          width: 2rem;
+          height: 2rem;
+          flex-basis: 2rem;
+          font-size: 0.9rem;
+      }
+  }
+}
