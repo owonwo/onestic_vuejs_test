@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import { formatDate } from "@/libs/date";
 import StoreList from '@/components/StoreList/StoreList';
 const stores = require('@/assets/stores/stores.json');
 
@@ -19,7 +19,7 @@ export default {
   },
   data () {
     return {
-      currentTime: moment().format('dddd, MMMM Do YYYY, h:mm:ss a'),
+      currentTime: formatDate(),
       stores
     }
   },
@@ -30,7 +30,7 @@ export default {
   },
   mounted() {
     const setTimer = () => setTimeout(() => {
-      this.currentTime = moment().format('dddd, MMMM Do YYYY, h:mm:ss a');
+      this.currentTime = formatDate()
       setTimer();
     }, 1000);
     setTimer();

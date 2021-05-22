@@ -5,26 +5,27 @@
 </template>
 
 <script>
-import moment from 'moment';
+import { formatDate } from "@/libs/date";
 
 export default {
-  name: 'Home',
-  data () {
+  name: "Home",
+  data() {
     return {
-      currentTime: moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
-    }
+      currentTime: formatDate(),
+    };
   },
   computed: {
-    welcomeMessage () {
-      return 'Welcome! Your local time is: ' + this.currentTime;
-    }
+    welcomeMessage() {
+      return "Welcome! Your local time is: " + this.currentTime;
+    },
   },
   mounted() {
-    const setTimer = () => setTimeout(() => {
-      this.currentTime = moment().format('dddd, MMMM Do YYYY, h:mm:ss a');
-      setTimer();
-    }, 1000);
+    const setTimer = () =>
+      setTimeout(() => {
+        this.currentTime = formatDate();
+        setTimer();
+      }, 1000);
     setTimer();
-  }
-}
+  },
+};
 </script>

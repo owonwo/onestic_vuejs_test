@@ -12,7 +12,7 @@
       />
     </div>
     <br />
-    <p v-if="isSearch && searchList.length == 0">
+    <p v-if="isSearch && searchList.length == 0" style="color: var(--color-red-800)">
       <i
         >Ooops! we couldn't find a store like <b>{{ searchStr }}</b></i
       >
@@ -58,8 +58,8 @@
 <script>
 import Store from "@/components/Store/Store";
 import Pagination from "@/components/Pagination/Pagination";
-import _ from "lodash";
-import { SearchIcon } from "vue-feather-icons";
+import { map, debounce, size, slice } from "lodash";
+import SearchIcon from "vue-feather-icons/icons/SearchIcon";
 
 export default {
   name: "StoreList",
@@ -85,14 +85,14 @@ export default {
   computed: {
     isSearch: (vm) => vm.searchStr.trim().length > 0,
     storesWithImages() {
-      return _.map(this.stores, function(store) {
+      return map(this.stores, function(store) {
         store["image"] = "https://via.placeholder.com/300?text=" + store.name;
 
         return store;
       });
     },
     storesCount() {
-      return _.size(this.isSearch ? this.searchList : this.stores);
+      return size(this.isSearch ? this.searchList : this.stores);
     },
     chunkedStores() {
       return this.storeChunk(this.storesWithImages);
@@ -105,9 +105,9 @@ export default {
     storeChunk(list) {
       const { itemsPerPage, page } = this;
       const offset = (page - 1) * itemsPerPage + 1;
-      return _.slice(list, offset - 1, offset + itemsPerPage);
+      return slice(list, offset - 1, offset + itemsPerPage);
     },
-    filterBySearch: _.debounce(function({ target: { value } }) {
+    filterBySearch: debounce(function({ target: { value } }) {
       this.searchStr = value.trim();
 
       if (value.length === 0) {

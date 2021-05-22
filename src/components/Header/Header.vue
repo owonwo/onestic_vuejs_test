@@ -18,18 +18,25 @@
           >
         </li>
       </ul>
-      <button class="theme-toggler" @click="toggleTheme">
+      <button
+        class="theme-toggler"
+        @click="toggleTheme"
+        aria-label="Toggle Light/Dark mode"
+      >
         <span><SunIcon /></span>
         <span><MoonIcon /></span>
       </button>
     </div>
   </div>
 </template>
+
 <style lang="scss">
 @import "./Header.scss";
 </style>
+
 <script>
-import { SunIcon, MoonIcon } from "vue-feather-icons";
+import SunIcon from "vue-feather-icons/icons/SunIcon";
+import MoonIcon from "vue-feather-icons/icons/MoonIcon";
 
 export default {
   name: "Header",
