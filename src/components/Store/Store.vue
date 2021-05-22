@@ -3,7 +3,7 @@
     <div class="store__wrapper">
       <h2 class="store__title">{{ title }}</h2>
       <span class="store__location">{{ location }}</span>
-      <img :src="photo" :alt="title" :title="title" />
+      <img :src="photo" :alt="title" :title="title" class="store__image" />
     </div>
   </div>
 </template>

@@ -12,8 +12,12 @@
       />
     </div>
     <br />
-    <br />
-    <p>
+    <p v-if="isSearch && searchList.length == 0">
+      <i
+        >Ooops! we couldn't find a store like <b>{{ searchStr }}</b></i
+      >
+    </p>
+    <p v-else>
       Here you can find all of our restaurants. We have a total of
       <b>{{ storesCount }}</b> stores right now!
     </p>
@@ -24,7 +28,7 @@
           :title="store.name"
           :photo="store.image"
           :location="store.location"
-          v-for="store in storeChunk(storesWithImages)"
+          v-for="store in chunkedStores"
           :key="store.id"
         />
       </template>
@@ -89,6 +93,9 @@ export default {
     },
     storesCount() {
       return _.size(this.isSearch ? this.searchList : this.stores);
+    },
+    chunkedStores() {
+      return this.storeChunk(this.storesWithImages);
     },
     pagesCount() {
       return Math.ceil(this.storesCount / this.itemsPerPage);

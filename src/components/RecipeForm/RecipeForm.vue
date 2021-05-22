@@ -100,7 +100,7 @@ export default {
     },
   },
   computed: {
-    mealCount: ({ meals = 0 }) => `${meals} Meal${meals > 1 ? "s" : ""}`,
+    mealCount: ({ meals = 0 }) => `${meals} meal${meals > 1 ? "s" : ""}`,
   },
   methods: {
     calculate(event) {
