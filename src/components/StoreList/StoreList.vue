@@ -116,6 +116,8 @@ export default {
       }
 
       this.searchList = this.storesWithImages.filter(({ name }) => {
+        if (!name) return false;
+
         return name.toLowerCase().includes(this.searchStr.toLowerCase());
       });
     }, 1000),

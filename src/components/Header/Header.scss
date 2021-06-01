@@ -27,6 +27,10 @@
         text-decoration: none;
         color: var(--color-primary);
 
+        &.router-link-exact-active {
+          color: var(--color-peter-river);
+        }
+
         &:hover {
           color: var(--color-highlight);
         }

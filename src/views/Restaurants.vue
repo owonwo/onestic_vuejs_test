@@ -10,7 +10,8 @@
 <script>
 import { formatDate } from "@/libs/date";
 import StoreList from '@/components/StoreList/StoreList';
-const stores = require('@/assets/stores/stores.json');
+
+const getStores = () => import(/* webpackChunkName: "static-restua-data" */ '@/assets/stores/stores.json');
 
 export default {
   name: 'Stores',
@@ -20,13 +21,18 @@ export default {
   data () {
     return {
       currentTime: formatDate(),
-      stores
+      stores: []
     }
   },
   computed: {
     welcomeMessage () {
       return 'Welcome to our restaurants list! Your local time is: ' + this.currentTime;
     }
+  },
+  beforeCreate() {
+    getStores().then(list => {
+      this.stores = Object.values(list);
+    });
   },
   mounted() {
     const setTimer = () => setTimeout(() => {

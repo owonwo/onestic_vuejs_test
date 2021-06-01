@@ -1,5 +1,7 @@
 <template>
   <div class="recipe-info">
+    <JokeOfTheDay />
+
     <banner
       text="Famas Pizza and Pasta"
       textDistribution="top"
@@ -35,12 +37,13 @@
 
 <script>
 import Banner from "../Banner/Banner.vue";
+import JokeOfTheDay from "../JokeOfTheDay/JokeOfTheDay.vue";
 import RecipeMixin from "@/mixins/RecipeMixin";
 
 export default {
-  components: { Banner },
   name: "RecipeInfo",
   mixins: [RecipeMixin],
+  components: { Banner, JokeOfTheDay },
   computed: {
     mealCount: ({ meals = 0 }) => `${meals} Meal${meals > 1 ? "s" : ""}`,
   },
